@@ -1724,3 +1724,16 @@ Entries:
   - type: Tweak
     message: имплант адреналин не имеет зарядов, вводит 30 гиперзина и перезаряжается
       2 минуты
+- id: 159
+  author: CyberBobeks
+  time: '2026-05-21T19:43:58.965898+00:00'
+  pr: 1459
+  changes:
+  - type: Add
+    message: Новая карта для среднего онлайна - Ishimura.
+  - type: Tweak
+    message: Ремап карты Omega.
+  - type: Tweak
+    message: Карта Omega переделана под низкий онлайн.
+  - type: Fix
+    message: Добавление карты Glacier в пул карт.
