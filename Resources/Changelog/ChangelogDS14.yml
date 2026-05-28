@@ -2180,3 +2180,10 @@ Entries:
   changes:
   - type: Fix
     message: Звук погоды в лобби.
+- id: 210
+  author: CyberBobeks
+  time: '2026-05-28T10:40:44.037537+00:00'
+  pr: 1541
+  changes:
+  - type: Fix
+    message: Слышимость ревенанта через красный телефон и портативные рации.
