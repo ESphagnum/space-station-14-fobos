@@ -2231,3 +2231,10 @@ Entries:
   changes:
   - type: Tweak
     message: Скорость метаболизма у гиперзина с 1.0 -> 0.5
+- id: 215
+  author: CyberBobeks
+  time: '2026-05-29T09:06:43.947121+00:00'
+  pr: 1547
+  changes:
+  - type: Fix
+    message: Доставание предметов умной экипировки со слота хранилища скафандра.
