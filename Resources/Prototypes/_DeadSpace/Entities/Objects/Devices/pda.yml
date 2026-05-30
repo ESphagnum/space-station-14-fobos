@@ -57,6 +57,15 @@
   id: CentcomFieldOfficerPDA
   suffix: ПО
   components:
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-black-centcom
+  - type: PdaBorderColor
+    borderColor: "#34343d"
+  - type: Icon
+    state: pda-black-centcom
   - type: Pda
     id: CentcomFieldOfficerIDCar
 
@@ -144,6 +153,8 @@
   components:
   - type: Pda
     id: CBURNLeaderIDcard
+
+
 
 - type: entity
   parent: BasePDA

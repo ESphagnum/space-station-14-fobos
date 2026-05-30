@@ -293,6 +293,9 @@
   id: Plastitanium
 
 - type: Tag
+  id: PoSabre
+
+- type: Tag
   id: Plasteel
 
 - type: Tag
