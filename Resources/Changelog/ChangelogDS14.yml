@@ -3607,3 +3607,12 @@ Entries:
       должны открыть консоль и нажать на кнопку угона).
   - type: Fix
     message: Возможность вынимать имплант аплинка у предателей УЛЬТРА.
+- id: 360
+  author: Atickov
+  time: '2026-06-19T14:24:03.712094+00:00'
+  pr: 1785
+  changes:
+  - type: Add
+    message: Атмос-пожарный костюм отныне защищает от пожара
+  - type: Add
+    message: Компонент IgnoreContactDamageComponent, который защищает от DamageContactsComponent
