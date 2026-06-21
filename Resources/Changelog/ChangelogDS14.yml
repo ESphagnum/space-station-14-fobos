@@ -3717,3 +3717,14 @@ Entries:
   changes:
   - type: Add
     message: Спрайты шлемов вульп на. Бщ, пилоте, ИСБ, ГВ, Парамед, Химик, Медик.
+- id: 369
+  author: RIP6100
+  time: '2026-06-21T17:11:55.858889+00:00'
+  pr: 1811
+  changes:
+  - type: Add
+    message: Психолог на карту Gemini и Train
+  - type: Tweak
+    message: Косметическое обновление всех отделов на карте Gemini
+  - type: Fix
+    message: Баги на карте Box
