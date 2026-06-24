@@ -3822,3 +3822,10 @@ Entries:
   - type: Add
     message: Добавлен сканер документов в КПК, его можно найти у АВД и ГП, а также
       в NT Software Hub
+- id: 380
+  author: IvanKupalda
+  time: '2026-06-24T19:40:47.886152+00:00'
+  pr: 1818
+  changes:
+  - type: Add
+    message: Теперь GPS пиликает при наличии боссов в ста тайлах от него
