@@ -3909,3 +3909,10 @@ Entries:
   changes:
   - type: Add
     message: Добавлена новая цель - Картхолл.
+- id: 389
+  author: IvanKuvalda
+  time: '2026-06-28T11:13:03.634832+00:00'
+  pr: 1849
+  changes:
+  - type: Add
+    message: Теперь, продвинутые ПНВ не настолько сильно убивают цвет.
