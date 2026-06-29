@@ -3933,3 +3933,16 @@ Entries:
     message: Мирная фауна на картах Silly и Pearl. By Amaliz
   - type: Fix
     message: Баги на картах Gemini, Box, Pearl и Silly. By Amaliz
+- id: 392
+  author: Akitovsky
+  time: '2026-06-29T13:23:26.276410+00:00'
+  pr: 1836
+  changes:
+  - type: Add
+    message: Возможность капитану выбрать торжественную куртку в лобби.
+  - type: Add
+    message: Новые автозамены в чате.
+  - type: Fix
+    message: Ошибки локализации.
+  - type: Fix
+    message: Произношение слова "ЧВК" ТТСом. Ангор frvr.
