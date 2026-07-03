@@ -4157,3 +4157,10 @@ Entries:
   changes:
   - type: Add
     message: секретный скаф кма в ящик кма
+- id: 411
+  author: GUSBOBERUS
+  time: '2026-07-03T14:20:28.242391+00:00'
+  pr: 1884
+  changes:
+  - type: Tweak
+    message: Дворфы теперь говорят названия профессий и рас в их стиле
