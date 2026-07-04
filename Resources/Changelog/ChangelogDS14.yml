@@ -4216,3 +4216,12 @@ Entries:
   changes:
   - type: Add
     message: Теперь, вы можете удалять отряды.
+- id: 418
+  author: zubekkk
+  time: '2026-07-04T12:03:45.257659+00:00'
+  pr: 1885
+  changes:
+  - type: Add
+    message: Возможность таранить щитами.
+  - type: Fix
+    message: Отсутствие локализации прочности щита
