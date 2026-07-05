@@ -4278,3 +4278,10 @@ Entries:
   changes:
   - type: Fix
     message: теперь градиент сохраняется при перезаходе.
+- id: 426
+  author: IvanKuvalda
+  time: '2026-07-05T15:17:26.566400+00:00'
+  pr: 1903
+  changes:
+  - type: Add
+    message: Добавлены таблички. Теперь точно.
