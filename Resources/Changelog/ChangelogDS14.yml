@@ -4271,3 +4271,10 @@ Entries:
   changes:
   - type: Remove
     message: Убран имплант макробомбы у АЦК, ОСО и ПОСО.
+- id: 425
+  author: IvanKuvalda
+  time: '2026-07-05T15:01:21.850153+00:00'
+  pr: 1906
+  changes:
+  - type: Fix
+    message: теперь градиент сохраняется при перезаходе.
