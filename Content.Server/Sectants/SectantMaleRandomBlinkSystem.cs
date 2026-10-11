@@ -37,6 +37,9 @@ public sealed class SectantMaleRandomBlinkSystem : EntitySystem
             if (!_mapSystem.TryGetTileRef(gridUid, grid, tile, out var tileRef) || tileRef.Tile.IsEmpty)
                 continue;
 
+            if (!_mapSystem.TryGetTileRef(gridUid, grid, tile, out _))
+                continue;
+
             _xform.SetWorldPosition(uid, target);
             Spawn("SectantBlinkEffect", _xform.GetMapCoordinates(uid));
             args.Handled = true;

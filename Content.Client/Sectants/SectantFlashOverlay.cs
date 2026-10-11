@@ -4,7 +4,6 @@ using Robust.Shared.Enums;
 using Robust.Shared.Maths;
 using System.Numerics;
 
-
 namespace Content.Client.Sectants;
 
 public sealed class SectantFlashOverlay : Overlay
@@ -13,13 +12,15 @@ public sealed class SectantFlashOverlay : Overlay
 
     private readonly Color _color;
     private readonly float _duration;
+    private readonly IOverlayManager _overlayManager;
     private float _timeLeft;
 
-    public SectantFlashOverlay(Color color, float duration)
+    public SectantFlashOverlay(Color color, float duration, IOverlayManager overlayManager)
     {
         _color = color;
         _duration = duration;
         _timeLeft = duration;
+        _overlayManager = overlayManager;
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -27,26 +28,22 @@ public sealed class SectantFlashOverlay : Overlay
         base.FrameUpdate(args);
         _timeLeft -= args.DeltaSeconds;
         if (_timeLeft <= 0)
-            Dispose();
+            _overlayManager.RemoveOverlay(this);
     }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
         var t = Math.Clamp(_timeLeft / _duration, 0f, 1f);
-
-        // Пульсирующая альфа: сначала резко, потом плавно
         var alpha = t * t * 0.6f;
 
         var handle = args.ScreenHandle;
         handle.SetTransform(Matrix3x2.Identity);
 
-        // Вспышка на весь экран
-        handle.DrawRect(args.Viewport, _color.WithAlpha(alpha));
+        var vp = args.ViewportBounds;
+        handle.DrawRect(vp, _color.WithAlpha(alpha));
 
-        // Винетка по краям — усиливаем насыщенность
         var vignette = _color.WithAlpha(t * 0.85f);
-        var border = 64f; // толщина винетки в пикселях
-        var vp = args.Viewport;
+        const float border = 64f;
         handle.DrawRect(new UIBox2(vp.Left, vp.Top, vp.Right, vp.Top + border), vignette);
         handle.DrawRect(new UIBox2(vp.Left, vp.Bottom - border, vp.Right, vp.Bottom), vignette);
         handle.DrawRect(new UIBox2(vp.Left, vp.Top, vp.Left + border, vp.Bottom), vignette);

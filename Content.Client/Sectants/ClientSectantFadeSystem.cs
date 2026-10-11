@@ -1,8 +1,6 @@
-using Content.Shared.Sectants;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Robust.Client.GameObjects;
-using Robust.Shared.Timing;
 
 namespace Content.Client.Sectants;
 

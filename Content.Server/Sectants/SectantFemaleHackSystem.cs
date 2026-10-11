@@ -1,4 +1,4 @@
-using Content.Server.Doors.Systems;          // DoorSystem
+using Content.Server.Doors.Systems;
 using Content.Shared.Doors.Components;
 using Content.Shared.Sectants;
 using Robust.Shared.Timing;
@@ -11,6 +11,7 @@ public sealed class SectantFemaleHackSystem : EntitySystem
     [Dependency] private readonly DoorSystem _door = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
+    private readonly HashSet<EntityUid> _entitySet = new();
     public override void Initialize()
     {
         SubscribeLocalEvent<SectantFemaleHackActionEvent>(OnHack);
@@ -19,10 +20,10 @@ public sealed class SectantFemaleHackSystem : EntitySystem
     private void OnHack(SectantFemaleHackActionEvent args)
     {
         var xform = Transform(args.Performer);
-        var coords = xform.Coordinates;
-        var nearby = _lookup.GetEntitiesInRange(coords, 3f);
+        _entitySet.Clear();
+        _lookup.GetEntitiesInRange(xform.Coordinates, 3f, _entitySet);
 
-        foreach (var ent in nearby)
+        foreach (var ent in _entitySet)
         {
             if (!TryComp<DoorComponent>(ent, out var door))
                 continue;

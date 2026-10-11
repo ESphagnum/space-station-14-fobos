@@ -1,10 +1,12 @@
-using Content.Client.Camera;                     // CameraRecoilSystem
-using Content.Shared.Camera;                     // CameraRecoilComponent
-using Content.Shared.DeadSpace.Camera;           // ScreenshakeSystem, ScreenshakeParameters
+using System.Numerics;
+using Content.Client.Camera;
+using Content.Shared.Camera;
+using Content.Shared.DeadSpace.Camera;
 using Content.Shared.Sectants;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Random;
+using Content.Client.Sectants;
 
 namespace Content.Client.Sectants;
 
@@ -16,6 +18,8 @@ public sealed class ClientSectantAnnouncementSystem : EntitySystem
     [Dependency] private readonly CameraRecoilSystem _recoil = default!;
     [Dependency] private readonly ScreenshakeSystem _screenshake = default!;
 
+    private SectantFlashOverlay? _currentFlash;
+
     public override void Initialize()
     {
         SubscribeNetworkEvent<SectantAnnouncementEvent>(OnAnnounce);
@@ -23,24 +27,28 @@ public sealed class ClientSectantAnnouncementSystem : EntitySystem
 
     private void OnAnnounce(SectantAnnouncementEvent ev)
     {
-        // 1. Красная вспышка + винетка
-        _overlay.AddOverlay(new SectantFlashOverlay(ev.Color, ev.FlashDuration));
+        if (_currentFlash != null)
+        {
+            _overlay.RemoveOverlay(_currentFlash);
+            _currentFlash = null;
+        }
+
+        _currentFlash = new SectantFlashOverlay(ev.Color, ev.FlashDuration, _overlay);
+        _overlay.AddOverlay(_currentFlash);
 
         if (_player.LocalEntity is not { } local)
             return;
 
-        // 2. Тряска камеры (KickCamera)
         var kick = new Vector2(
             _random.NextFloat(-ev.ShakeIntensity, ev.ShakeIntensity),
             _random.NextFloat(-ev.ShakeIntensity, ev.ShakeIntensity));
         _recoil.KickCamera(local, kick);
 
-        // 3. Дополнительная тряска экрана через ScreenshakeSystem
         _screenshake.Screenshake(local, null, new ScreenshakeParameters
         {
-            Trauma = 0.5f,          // сила удара (0..1)
-            DecayRate = 1.2f,       // как быстро затухает
-            Frequency = 0.008f,     // частота дрожания
+            Trauma = 0.5f,
+            DecayRate = 1.2f,
+            Frequency = 0.008f,
         });
     }
 }

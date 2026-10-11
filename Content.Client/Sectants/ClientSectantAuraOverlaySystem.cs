@@ -1,10 +1,11 @@
-// Мёртвый Космос, Licensed under custom terms with restrictions on public hosting and commercial use, full text: https://raw.githubusercontent.com/dead-space-server/space-station-14-fobos/master/LICENSE.TXT
-
+using System.Collections.Generic;
 using System.Linq;
 using Content.Shared.Sectants;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
+
 
 namespace Content.Client.Sectants;
 
@@ -25,16 +26,15 @@ public sealed class ClientSectantAuraOverlaySystem : EntitySystem
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 
+        var layerIndex = sprite.AddLayer(new SpriteSpecifier.Rsi(new ResPath("_DeadSpace/TEMP_FOR_EVENT/little_gabry/aura.rsi"), "icon"));
+
         var shader = _protoMan.Index<ShaderPrototype>(ent.Comp.Shader).InstanceUnique();
         shader.SetParameter("auraColor", ent.Comp.Color);
         shader.SetParameter("pulseSpeed", ent.Comp.PulseSpeed);
         shader.SetParameter("outlineWidth", ent.Comp.OutlineWidth);
         shader.SetParameter("spikeCount", ent.Comp.SpikeCount);
 
-        for (var i = 0; i < sprite.AllLayers.Count(); i++)
-        {
-            sprite.LayerSetShader(i, shader);
-        }
+        sprite.LayerSetShader(layerIndex, shader);
     }
 
     private void OnShutdown(Entity<SectantAuraOverlayComponent> ent, ref ComponentShutdown args)
@@ -42,9 +42,14 @@ public sealed class ClientSectantAuraOverlaySystem : EntitySystem
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 
-        for (var i = 0; i < sprite.AllLayers.Count(); i++)
+        for (var i = sprite.AllLayers.Count() - 1; i >= 0; i--)
         {
-            sprite.LayerSetShader(i, null, null);
+            var layer = sprite[i];
+            if (layer.RsiState.Name == "icon")
+            {
+                sprite.RemoveLayer(i);
+                break;
+            }
         }
     }
 }

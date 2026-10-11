@@ -26,6 +26,7 @@ public sealed class SectantAnnouncementSystem : EntitySystem
         _chat.DispatchServerAnnouncement(message, col);
 
         if (sound != null)
+            sound.Params.WithVolume(-10f);
             _audio.PlayGlobal(sound, Filter.Broadcast(), recordReplay: true);
 
         var ev = new SectantAnnouncementEvent
