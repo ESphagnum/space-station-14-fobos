@@ -65,8 +65,6 @@ public sealed partial class AirlockKnockoutBehavior : IThresholdBehavior
         SpawnPiece(entMan, physics, random, LeftPieceProto, new MapCoordinates(pos - new Vector2(0.05f, 0f), mapId), leftDir, ImpulseForce);
         SpawnPiece(entMan, physics, random, RightPieceProto, new MapCoordinates(pos + new Vector2(0.05f, 0f), mapId), rightDir, ImpulseForce);
 
-        Logger.GetSawmill("deadspace.knockout").Info($"AirlockKnockoutBehavior fired on {owner}");
-
         entMan.QueueDeleteEntity(owner);
     }
 
