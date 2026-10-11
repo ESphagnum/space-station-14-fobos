@@ -487,8 +487,6 @@ public sealed partial class ExplosionSystem
                 }
                 // DS14-end
 
-                _damageableSystem.TryChangeDamage((entity, damageable), damage,
-                    ignoreResistances: true, ignoreGlobalModifiers: true, origin: cause);
 
                 // TODO EXPLOSIONS turn explosions into entities, and pass the the entity in as the damage origin.
                 _damageableSystem.TryChangeDamage((entity, damageable), damage, ignoreResistances: true, ignoreGlobalModifiers: true, origin: cause); // DS14
