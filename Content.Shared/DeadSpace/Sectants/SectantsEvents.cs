@@ -1,7 +1,7 @@
 using Content.Shared.Actions;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.Sectants;
+namespace Content.Shared.DeadSpace.Sectants;
 
 public sealed partial class SectantSleepActionEvent : InstantActionEvent { }
 

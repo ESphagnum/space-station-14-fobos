@@ -1,6 +1,6 @@
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.Sectants;
+namespace Content.Shared.DeadSpace.Sectants;
 
 [Serializable, NetSerializable]
 public sealed class SectantAnnouncementEvent : EntityEventArgs

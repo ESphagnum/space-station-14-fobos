@@ -2,10 +2,10 @@ using Content.Server.Popups;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantMaleExecuteSystem : EntitySystem
 {

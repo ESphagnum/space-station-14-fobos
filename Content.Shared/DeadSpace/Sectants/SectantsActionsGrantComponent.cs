@@ -1,7 +1,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.Sectants;
+namespace Content.Shared.DeadSpace.Sectants;
 
 /// <summary>Выдаёт набор экшенов при инициализации сущности.</summary>
 [RegisterComponent, NetworkedComponent]

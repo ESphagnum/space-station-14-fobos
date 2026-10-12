@@ -7,7 +7,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 
-namespace Content.Client.Sectants;
+namespace Content.Client.DeadSpace.Sectants;
 
 /// <summary>
 /// Дрожащий кроваво-красный текст с глитч-блоками и «просачиванием».

@@ -1,13 +1,13 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.Chat;
 using Content.Shared.Mobs;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantDisappearSystem : EntitySystem
 {

@@ -6,7 +6,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.Sectants;
+namespace Content.Shared.DeadSpace.Sectants;
 
 /// <summary>Marks entity as disappearing on death without leaving a corpse, broadcasting a message.</summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]

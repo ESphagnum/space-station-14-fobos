@@ -2,7 +2,7 @@ using Robust.Client.Graphics;
 using Robust.Shared.Timing;
 using Robust.Shared.Enums;
 
-namespace Content.Client.Sectants;
+namespace Content.Client.DeadSpace.Sectants;
 
 /// <summary>
 /// Ползущая тьма по краям экрана + пульсирующий тёмно-красный фильтр.

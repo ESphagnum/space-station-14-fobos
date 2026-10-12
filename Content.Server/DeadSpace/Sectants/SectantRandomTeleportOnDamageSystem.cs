@@ -3,7 +3,7 @@
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -11,7 +11,7 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantRandomTeleportOnDamageSystem : EntitySystem
 {

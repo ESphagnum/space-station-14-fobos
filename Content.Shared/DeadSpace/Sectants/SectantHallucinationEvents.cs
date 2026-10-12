@@ -1,7 +1,7 @@
 using System.Numerics;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.Sectants;
+namespace Content.Shared.DeadSpace.Sectants;
 
 /// <summary>
 /// Сервер→клиент: показать/обновить/убрать визуал галлюцинации.

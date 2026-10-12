@@ -3,12 +3,12 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Server.Player;
 using Robust.Shared.Player;                  // ← ICommonSession
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantHallucinationIllusionSystem : EntitySystem
 {

@@ -1,9 +1,9 @@
 using Content.Shared.Actions;
 using Content.Server.Actions;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantActionsGrantSystem : EntitySystem
 {

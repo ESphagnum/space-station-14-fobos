@@ -1,10 +1,10 @@
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantSleepSystem : EntitySystem
 {

@@ -1,7 +1,7 @@
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Shared.Map;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantFemaleBlinkSystem : EntitySystem
 {

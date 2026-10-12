@@ -5,7 +5,7 @@ using Content.Shared.Standing;
 using JetBrains.Annotations;
 using Robust.Shared.Timing;
 
-namespace Content.Shared.Sectants;
+namespace Content.Shared.DeadSpace.Sectants;
 
 /// <summary>Shared helpers for sectant alpha entities.</summary>
 [UsedImplicitly]

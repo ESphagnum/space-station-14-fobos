@@ -3,7 +3,7 @@ using Content.Shared.Administration;
 using Robust.Shared.Audio;
 using Robust.Shared.Console;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 [AdminCommand(AdminFlags.Admin)]
 public sealed class SectantAnnounceCommand : IConsoleCommand

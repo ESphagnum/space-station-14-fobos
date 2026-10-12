@@ -1,10 +1,10 @@
 using Content.Shared.Mobs.Components;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Server.Player;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantFemaleHallucinateSystem : EntitySystem
 {

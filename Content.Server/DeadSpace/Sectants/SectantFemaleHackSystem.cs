@@ -1,9 +1,9 @@
 using Content.Server.Doors.Systems;
 using Content.Shared.Doors.Components;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Shared.Timing;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantFemaleHackSystem : EntitySystem
 {

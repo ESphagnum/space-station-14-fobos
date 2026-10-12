@@ -2,7 +2,7 @@ using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Robust.Client.GameObjects;
 
-namespace Content.Client.Sectants;
+namespace Content.Client.DeadSpace.Sectants;
 
 /// <summary>Smoothly interpolates stealth visibility for sectants.</summary>
 public sealed class ClientSectantFadeSystem : EntitySystem

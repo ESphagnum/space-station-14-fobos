@@ -1,5 +1,5 @@
 using System.Numerics;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Enums;
@@ -7,7 +7,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
-namespace Content.Client.Sectants;
+namespace Content.Client.DeadSpace.Sectants;
 
 public sealed class ClientSectantHallucinationIllusionSystem : EntitySystem
 {

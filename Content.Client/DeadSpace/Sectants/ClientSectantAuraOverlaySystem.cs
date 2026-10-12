@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 
-namespace Content.Client.Sectants;
+namespace Content.Client.DeadSpace.Sectants;
 
 public sealed class ClientSectantAuraOverlaySystem : EntitySystem
 {

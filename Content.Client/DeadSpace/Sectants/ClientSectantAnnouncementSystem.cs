@@ -2,7 +2,7 @@ using System.Numerics;
 using Content.Client.Camera;
 using Content.Shared.Camera;
 using Content.Shared.DeadSpace.Camera;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
@@ -12,7 +12,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 
-namespace Content.Client.Sectants;
+namespace Content.Client.DeadSpace.Sectants;
 
 public sealed class ClientSectantAnnouncementSystem : EntitySystem
 {

@@ -4,7 +4,7 @@ using Robust.Shared.Enums;
 using Robust.Shared.Maths;
 using System.Numerics;
 
-namespace Content.Client.Sectants;
+namespace Content.Client.DeadSpace.Sectants;
 
 public sealed class SectantFlashOverlay : Overlay
 {

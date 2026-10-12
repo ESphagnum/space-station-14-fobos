@@ -1,12 +1,12 @@
 using Content.Server.Chat.Managers;
 using Content.Shared.Chat;
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 
-namespace Content.Server.Sectants;
+namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantAnnouncementSystem : EntitySystem
 {

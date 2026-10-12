@@ -1,8 +1,8 @@
-using Content.Shared.Sectants;
+using Content.Shared.DeadSpace.Sectants;
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client.Sectants;
+namespace Content.Client.DeadSpace.Sectants;
 
 public sealed class ClientSectantHallucinationOverlaySystem : EntitySystem
 {
