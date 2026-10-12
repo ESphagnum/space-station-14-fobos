@@ -5,8 +5,6 @@ namespace Content.Server.DeadSpace.Sectants;
 
 public sealed class SectantArrivalSystem : EntitySystem
 {
-    [Dependency] private readonly SectantAnnouncementSystem _announce = default!;
-
     public override void Initialize()
     {
         SubscribeLocalEvent<SectantDisappearComponent, ComponentStartup>(OnSpawn);
