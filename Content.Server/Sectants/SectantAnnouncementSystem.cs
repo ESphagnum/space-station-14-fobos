@@ -18,15 +18,18 @@ public sealed class SectantAnnouncementSystem : EntitySystem
         string message,
         SoundSpecifier? sound = null,
         Color? color = null,
-        float flashDuration = 2.5f,
-        float shakeIntensity = 6f)
+        float flashDuration = 1.2f,
+        float vignetteDuration = 5f,
+        float textDuration = 4f,
+        float shakeIntensity = 5f,
+        bool whisper = true,
+        float whisperDuration = 6f)
     {
-        var col = color ?? Color.Red;
+        var col = color ?? Color.FromHex("#8b0000");
 
         _chat.DispatchServerAnnouncement(message, col);
 
         if (sound != null)
-            sound.Params.WithVolume(-10f);
             _audio.PlayGlobal(sound, Filter.Broadcast(), recordReplay: true);
 
         var ev = new SectantAnnouncementEvent
@@ -35,6 +38,10 @@ public sealed class SectantAnnouncementSystem : EntitySystem
             Color = col,
             FlashDuration = flashDuration,
             ShakeIntensity = shakeIntensity,
+            VignetteDuration = vignetteDuration,
+            TextDuration = textDuration,
+            Whisper = whisper,
+            WhisperDuration = whisperDuration,
         };
 
         foreach (var session in _players.Sessions)

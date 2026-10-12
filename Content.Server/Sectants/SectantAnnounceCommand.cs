@@ -22,10 +22,15 @@ public sealed class SectantAnnounceCommand : IConsoleCommand
 
         var announce = _sysMan.GetEntitySystem<SectantAnnouncementSystem>();
         announce.Announce(
-            text,
-            new SoundPathSpecifier("/Audio/_DeadSpace/TEMP_FOR_EVENT/little_gabry/laughAl.ogg"),
-            Color.FromHex("#cc0000"),
-            flashDuration: 3.0f,
-            shakeIntensity: 8f);
+            "ОНО ПРИБЛИЖАЕТСЯ…",
+            new SoundPathSpecifier(
+                "/Audio/_DeadSpace/TEMP_FOR_EVENT/little_gabry/laughAl.ogg",
+                AudioParams.Default.WithVolume(-8f)),
+            Color.FromHex("#8b0000"),
+            flashDuration: 1.2f,
+            vignetteDuration: 5f,
+            textDuration: 4f,
+            shakeIntensity: 5f,
+            whisper: true);
     }
 }

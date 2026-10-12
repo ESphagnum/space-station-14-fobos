@@ -17,12 +17,5 @@ public sealed class SectantArrivalSystem : EntitySystem
         if (!HasComp<SectantInvisibilityToggleComponent>(uid) &&
             !HasComp<SectantRandomTeleportOnDamageComponent>(uid))
             return;
-
-        _announce.Announce(
-            "ОНО ПРИБЛИЖАЕТСЯ…",
-            new SoundPathSpecifier("/Audio/_DeadSpace/TEMP_FOR_EVENT/little_gabry/laughAl.ogg"),
-            Color.FromHex("#cc0000"),
-            flashDuration: 3.0f,
-            shakeIntensity: 8f);
     }
 }
