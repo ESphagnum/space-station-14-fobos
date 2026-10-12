@@ -1,4 +1,3 @@
-using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs.Components;
 using Content.Shared.DeadSpace.Sectants;
 using Content.Shared.StatusEffect;
@@ -9,9 +8,11 @@ namespace Content.Server.DeadSpace.Sectants;
 public sealed class SectantSleepSystem : EntitySystem
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly StatusEffectsSystem _status = default!;
     [Dependency] private readonly SectantSystem _sectant = default!;
 
     private static readonly EntProtoId SleepEffect = "StatusEffectForcedSleeping";
+    private const float SleepDuration = 3f;
 
     private readonly HashSet<EntityUid> _entitySet = new();
 
@@ -31,9 +32,10 @@ public sealed class SectantSleepSystem : EntitySystem
         {
             if (ent == uid) continue;
             if (!HasComp<MobStateComponent>(ent)) continue;
+            if (!HasComp<StatusEffectsComponent>(ent)) continue;
             if (_sectant.IsAllyOf(uid, ent)) continue;
 
-            EnsureComp<SleepingComponent>(ent);
+            _status.TryAddStatusEffect(ent, SleepEffect, TimeSpan.FromSeconds(SleepDuration), refresh: true);
         }
 
         args.Handled = true;

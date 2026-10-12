@@ -25,6 +25,12 @@ public sealed class ClientSectantHallucinationIllusionSystem : EntitySystem
         SubscribeNetworkEvent<SectantHallucinationVisualEvent>(OnVisual);
     }
 
+    public override void FrameUpdate(float frameTime)
+    {
+        base.FrameUpdate(frameTime);
+        _ill?.Tick(frameTime);
+    }
+
     public override void Shutdown()
     {
         if (_ill != null)

@@ -13,6 +13,8 @@ public sealed class ClientSectantAuraOverlaySystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
 
+    private readonly Dictionary<EntityUid, int> _auraLayers = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -27,6 +29,7 @@ public sealed class ClientSectantAuraOverlaySystem : EntitySystem
             return;
 
         var layerIndex = sprite.AddLayer(new SpriteSpecifier.Rsi(new ResPath("_DeadSpace/TEMP_FOR_EVENT/little_gabry/aura.rsi"), "icon"));
+        _auraLayers[ent.Owner] = layerIndex;
 
         var shader = _protoMan.Index<ShaderPrototype>(ent.Comp.Shader).InstanceUnique();
         shader.SetParameter("auraColor", ent.Comp.Color);
@@ -39,17 +42,12 @@ public sealed class ClientSectantAuraOverlaySystem : EntitySystem
 
     private void OnShutdown(Entity<SectantAuraOverlayComponent> ent, ref ComponentShutdown args)
     {
+        if (!_auraLayers.Remove(ent.Owner, out var layerIndex))
+            return;
+
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 
-        for (var i = sprite.AllLayers.Count() - 1; i >= 0; i--)
-        {
-            var layer = sprite[i];
-            if (layer.RsiState.Name == "icon")
-            {
-                sprite.RemoveLayer(i);
-                break;
-            }
-        }
+        sprite.RemoveLayer(layerIndex);
     }
 }

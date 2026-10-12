@@ -1,3 +1,4 @@
+using Content.Shared.DeadSpace.Sectants;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Robust.Client.GameObjects;
@@ -12,10 +13,21 @@ public sealed class ClientSectantFadeSystem : EntitySystem
 
     private readonly Dictionary<EntityUid, float> _lastAlpha = new();
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<SectantInvisibilityToggleComponent, ComponentShutdown>(OnShutdown);
+    }
+
+    private void OnShutdown(EntityUid uid, SectantInvisibilityToggleComponent comp, ComponentShutdown args)
+    {
+        _lastAlpha.Remove(uid);
+    }
+
     public override void FrameUpdate(float frameTime)
     {
-        var query = EntityQueryEnumerator<StealthComponent, SpriteComponent>();
-        while (query.MoveNext(out var uid, out var stealth, out var sprite))
+        var query = EntityQueryEnumerator<StealthComponent, SectantInvisibilityToggleComponent, SpriteComponent>();
+        while (query.MoveNext(out var uid, out var stealth, out _, out var sprite))
         {
             var target = _stealth.GetVisibility(uid, stealth);
 

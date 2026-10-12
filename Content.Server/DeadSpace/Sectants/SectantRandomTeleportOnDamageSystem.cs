@@ -1,10 +1,8 @@
 // Скорее всего будет вырезано
 
-using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.DeadSpace.Sectants;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -24,6 +22,17 @@ public sealed class SectantRandomTeleportOnDamageSystem : EntitySystem
 
     private readonly Dictionary<EntityUid, FixedPoint2> _lastDamage = new();
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<SectantRandomTeleportOnDamageComponent, ComponentShutdown>(OnShutdown);
+    }
+
+    private void OnShutdown(EntityUid uid, SectantRandomTeleportOnDamageComponent comp, ComponentShutdown args)
+    {
+        _lastDamage.Remove(uid);
+    }
+
     public override void Update(float frameTime)
     {
         var query = EntityQueryEnumerator<SectantRandomTeleportOnDamageComponent, DamageableComponent>();
@@ -39,7 +48,6 @@ public sealed class SectantRandomTeleportOnDamageSystem : EntitySystem
 
             if (current > last)
             {
-                Logger.GetSawmill("sectant").Info($"DMG INCREASED: {last} -> {current}");
                 if (_sectant.CanTeleport(uid, comp))
                 {
                     if (TryTeleport(uid, comp))
@@ -77,7 +85,6 @@ public sealed class SectantRandomTeleportOnDamageSystem : EntitySystem
                 continue;
 
             _xform.SetWorldPosition(uid, target);
-            Logger.GetSawmill("sectant").Info($"TELEPORT to {target}");
 
             if (comp.Sound != null)
                 _audio.PlayPvs(comp.Sound, uid);
