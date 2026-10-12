@@ -13,6 +13,24 @@ public sealed class SectantAnnounceCommand : IConsoleCommand
     [Dependency] private readonly IEntityManager _entities = default!;
     [Dependency] private readonly IEntitySystemManager _sysMan = default!;
 
+
+    // # Простой анонс со стандартными параметрами
+    // sectant_announce
+
+    // # Свой текст
+    // sectant_announce ОНО ИДЁТ ЗА ТОБОЙ
+
+    // # С усиленной тряской и красным цветом
+    // sectant_announce "ОНО БЛИЗКО" --shake 12 --color "#ff0000"
+
+    // # Только для одного игрока (uid через F3 → Entity → Copy NetEntity)
+    // sectant_announce "ТОЛЬКО ТЫ" --target 1234
+
+    // # Тихий анонс без шёпота
+    // sectant_announce "..." --no-whisper --volume -20
+
+    // # Длинный текст
+    // sectant_announce "ТЫ УМРЁШЬ ЗДЕСЬ" --text 8 --vignette 10
     public string Command => "sectant_announce";
     public string Description => "Запускает анонс Альпа для всех игроков.";
     public string Help =>
