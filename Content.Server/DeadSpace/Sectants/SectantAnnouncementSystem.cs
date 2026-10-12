@@ -47,4 +47,44 @@ public sealed class SectantAnnouncementSystem : EntitySystem
         foreach (var session in _players.Sessions)
             RaiseNetworkEvent(ev, session.Channel);
     }
+
+    /// <summary>Показать анонс только одной сущности-игроку.</summary>
+    public void AnnounceTo(
+        EntityUid target,
+        string message,
+        SoundSpecifier? sound = null,
+        Color? color = null,
+        float flashDuration = 1.2f,
+        float vignetteDuration = 5f,
+        float textDuration = 4f,
+        float shakeIntensity = 5f,
+        bool whisper = true,
+        float whisperDuration = 6f)
+    {
+        var col = color ?? Color.FromHex("#8b0000");
+
+        // Найти сессию цели
+        if (!_players.TryGetSessionByEntity(target, out var session))
+            return;
+
+        // Звук — только цели
+        if (sound != null)
+            _audio.PlayGlobal(sound, Filter.Entities(target), recordReplay: false);
+
+        // Событие — только цели
+        var ev = new SectantAnnouncementEvent
+        {
+            Message = message,
+            Color = col,
+            FlashDuration = flashDuration,
+            ShakeIntensity = shakeIntensity,
+            VignetteDuration = vignetteDuration,
+            TextDuration = textDuration,
+            Whisper = whisper,
+            WhisperDuration = whisperDuration,
+        };
+
+        RaiseNetworkEvent(ev, session.Channel);
+    }
+
 }
