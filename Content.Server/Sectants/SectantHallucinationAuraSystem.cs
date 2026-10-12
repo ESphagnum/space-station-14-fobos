@@ -1,4 +1,3 @@
-using Content.Shared.NPC.Components;
 using Content.Shared.Sectants;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Timing;
@@ -10,6 +9,7 @@ public sealed class SectantHallucinationAuraSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly StatusEffectsSystem _status = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SectantSystem _sectant = default!;
 
     private readonly HashSet<EntityUid> _entitySet = new();
 
@@ -29,28 +29,12 @@ public sealed class SectantHallucinationAuraSystem : EntitySystem
             {
                 if (target == uid) continue;
                 if (!HasComp<StatusEffectsComponent>(target)) continue;
-
-                if (AreInSameFaction(uid, target)) continue;
+                if (_sectant.IsAllyOf(uid, target)) continue;
 
                 _status.TryAddStatusEffect(target, aura.SleepEffect,  TimeSpan.FromSeconds(3), refresh: true);
                 _status.TryAddStatusEffect(target, aura.PacifyEffect, TimeSpan.FromSeconds(5), refresh: true);
                 _status.TryAddStatusEffect(target, aura.BlindEffect,  TimeSpan.FromSeconds(4), refresh: true);
             }
         }
-    }
-
-    /// <summary>
-    /// Ручная проверка общих фракций — обходит RA0002 (прямой доступ к Factions разрешён только на чтение).
-    /// </summary>
-    private bool AreInSameFaction(EntityUid a, EntityUid b)
-    {
-        if (!TryComp<NpcFactionMemberComponent>(a, out var ca)) return false;
-        if (!TryComp<NpcFactionMemberComponent>(b, out var cb)) return false;
-
-        foreach (var fa in ca.Factions)
-        foreach (var fb in cb.Factions)
-            if (fa == fb) return true;
-
-        return false;
     }
 }
